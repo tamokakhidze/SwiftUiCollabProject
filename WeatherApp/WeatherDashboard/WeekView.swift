@@ -8,44 +8,40 @@ struct WeekView: View {
     @ObservedObject var viewModel: WeatherViewModel
     
     var body: some View {
-        List {
-            ForEach(viewModel.dailyWeather, id: \.date) { day in
-                HStack {
-                    Text(day.date)
-                        .frame(width: 80, alignment: .leading)
-                    Spacer()
-                    
-                    if let iconURL = viewModel.getIconURL(for: day.icon) {
-                        AsyncImage(url: iconURL) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
-                            ProgressView()
+        
+        ScrollView {
+            VStack {
+                ForEach(viewModel.dailyWeather, id: \.id) { daily in
+                    HStack {
+                        Text(TimeFormat.weekdayString(from: daily.date))
+                            .frame(width: 100, alignment: .leading)
+                        Spacer()
+                        if let url = viewModel.getIconURL(for: daily.icon) {
+                            AsyncImage(url: url) { image in
+                                image.resizable()
+                            } placeholder: {
+                                Image(systemName: "cloud.fill")
+                            }
+                            .frame(width: 50, height: 50)
                         }
-                        .frame(width: 50, height: 50)
+                        Spacer()
+                        
+                        VStack {
+                            Text(" \(daily.maxTemp - 273.15, specifier: "%.0f")°C")
+                                .frame(width: 50, alignment: .trailing)
+                        }
+                        Spacer()
+                        Text(" \(daily.minTemp - 273.15, specifier: "%.0f")°C")
+                            .frame(width: 50, alignment: .trailing)
                     }
-                    Spacer(minLength: 70)
-                    
-                    Text("\(Int(day.averageTemp - 273.15))°")
-                        .frame(width: 40, alignment: .trailing)
-                    Text("\(Int(day.averageTemp - 273.15))°")
-                        .frame(width: 40, alignment: .trailing)
-                        .foregroundStyle(.secondaryText)
+                    .padding()
+                    .background(Color.white.opacity(0.2))
+                    .cornerRadius(10)
                 }
-                .padding(.leading, 10)
-                .padding(.trailing, 10)
-                .padding(.vertical, 5)
-                .background(.ultraThinMaterial)
-                .cornerRadius(20)
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
+                
             }
-            .listRowInsets(EdgeInsets())
+            .padding(.horizontal)
         }
-        .background(BlurView())
-        .cornerRadius(20)
-        .shadow(radius: 10)
     }
 }
 
@@ -60,11 +56,11 @@ import SwiftUI
 
 struct BlurView: UIViewRepresentable {
     var style: UIBlurEffect.Style = .systemMaterial
-
+    
     func makeUIView(context: Context) -> UIVisualEffectView {
         return UIVisualEffectView(effect: UIBlurEffect(style: style))
     }
-
+    
     func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
 
