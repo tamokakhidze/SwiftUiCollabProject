@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrecipitationsView: View {
     @ObservedObject var viewModel: WeatherViewModel
-
+    
     var body: some View {
         VStack {
             HStack {
@@ -19,7 +19,7 @@ struct PrecipitationsView: View {
                         .font(.system(size: 64, weight: .bold))
                     Text("Precipitations")
                         .font(.title2)
-                    Text("Max: \(kelvinToCelsius(viewModel.dailyWeather.first?.averageTemp ?? 0.0))° Min: \(kelvinToCelsius(viewModel.dailyWeather.first?.averageTemp ?? 0.0))°")
+                    Text("Max: \(kelvinToCelsius(viewModel.dailyWeather.first?.maxTemp ?? 0.0))° Min: \(kelvinToCelsius(viewModel.dailyWeather.first?.minTemp ?? 0.0))°")
                         .font(.title3)
                 }
                 .padding(.bottom, 5)
@@ -31,27 +31,25 @@ struct PrecipitationsView: View {
             .shadow(radius: 10)
             .padding()
             
-
             HStack(spacing: 30) {
                 HStack {
-                    Image(.drizzlePercentageIcon)
+                    Image(systemName: "cloud.drizzle")
                         .renderingMode(.template)
-
-                    Text("\(viewModel.weather.first?.main.temp ?? 0)")
+                    
+                    Text("18 %")
                 }
                 Spacer()
                 HStack {
-                    Image(.humidityIcon)
+                    Image(systemName: "drop.fill")
                         .renderingMode(.template)
-
-                    Text("\(viewModel.weather.first?.main.temp ?? 0)%")
+                    
+                    Text("\(Int(viewModel.dailyWeather.first?.averageHumidity ?? 0)) %")
                 }
-                Spacer()
                 HStack {
-                    Image(.windIcon)
+                    Image(systemName: "wind")
                         .renderingMode(.template)
-                        
-                    Text("\(String(format: "%.1f", viewModel.weather.first?.main.temp ?? 0.0)) km/h")
+                    
+                    Text("\(String(format: "%.1f", viewModel.dailyWeather.first?.averageWindSpeed ?? 0.0)) km/h")
                 }
             }
             .padding()
@@ -59,11 +57,10 @@ struct PrecipitationsView: View {
             .cornerRadius(20)
             .shadow(radius: 10)
             .padding()
-            //.foregroundStyle(.white)
-            
         }
     }
-        func kelvinToCelsius(_ kelvin: Double) -> Int {
+    
+    func kelvinToCelsius(_ kelvin: Double) -> Int {
         return Int(kelvin - 273.15)
     }
 }
