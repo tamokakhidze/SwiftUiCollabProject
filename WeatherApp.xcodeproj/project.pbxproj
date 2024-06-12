@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60BA70352C199DE40040CEE5 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA70342C199DE40040CEE5 /* NetworkingService.swift */; };
+		60BA70372C19A16B0040CEE5 /* WeatherAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA70362C19A16B0040CEE5 /* WeatherAppViewModel.swift */; };
+		60BA703A2C19A42A0040CEE5 /* TimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA70392C19A42A0040CEE5 /* TimeFormat.swift */; };
 		A9BDE4442C18CFF7009615D6 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4432C18CFF7009615D6 /* WeatherAppApp.swift */; };
 		A9BDE4462C18CFF7009615D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4452C18CFF7009615D6 /* ContentView.swift */; };
 		A9BDE4482C18CFFA009615D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BDE4472C18CFFA009615D6 /* Assets.xcassets */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60BA70342C199DE40040CEE5 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		60BA70362C19A16B0040CEE5 /* WeatherAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppViewModel.swift; sourceTree = "<group>"; };
+		60BA70392C19A42A0040CEE5 /* TimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormat.swift; sourceTree = "<group>"; };
 		A9BDE4402C18CFF7009615D6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BDE4432C18CFF7009615D6 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		A9BDE4452C18CFF7009615D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +66,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60BA70332C199DC60040CEE5 /* NetworkingService */ = {
+			isa = PBXGroup;
+			children = (
+				60BA70342C199DE40040CEE5 /* NetworkingService.swift */,
+			);
+			path = NetworkingService;
+			sourceTree = "<group>";
+		};
+		60BA70382C19A16F0040CEE5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				60BA70362C19A16B0040CEE5 /* WeatherAppViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A9BDE4372C18CFF7009615D6 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,8 @@
 			children = (
 				A9BDE45E2C18D226009615D6 /* App */,
 				A9BDE4512C18D035009615D6 /* Model */,
+				60BA70332C199DC60040CEE5 /* NetworkingService */,
+				60BA70382C19A16F0040CEE5 /* ViewModel */,
 				A9BDE4522C18D044009615D6 /* WeatherDashboard */,
 				A9BDE4532C18D056009615D6 /* SearchLocation */,
 				A9BDE45F2C18D238009615D6 /* Resources */,
@@ -102,6 +126,7 @@
 			children = (
 				A9BDE4622C18D284009615D6 /* Weather.swift */,
 				A9BDE4692C18D83F009615D6 /* SearchLocation.swift */,
+				60BA70392C19A42A0040CEE5 /* TimeFormat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,7 +255,9 @@
 				A9BDE4732C18DD39009615D6 /* SnowyBackground.swift in Sources */,
 				A9BDE45D2C18D215009615D6 /* MainViewModel.swift in Sources */,
 				A9BDE4462C18CFF7009615D6 /* ContentView.swift in Sources */,
+				60BA70372C19A16B0040CEE5 /* WeatherAppViewModel.swift in Sources */,
 				A9BDE46D2C18DCFE009615D6 /* SunnyBackground.swift in Sources */,
+				60BA703A2C19A42A0040CEE5 /* TimeFormat.swift in Sources */,
 				A9BDE4592C18D16C009615D6 /* WeekView.swift in Sources */,
 				A9BDE4442C18CFF7009615D6 /* WeatherAppApp.swift in Sources */,
 				A9BDE4632C18D284009615D6 /* Weather.swift in Sources */,
@@ -238,6 +265,7 @@
 				A9BDE4572C18D14F009615D6 /* TodayView.swift in Sources */,
 				A9BDE4552C18D0AF009615D6 /* PrecipitationsView.swift in Sources */,
 				A9BDE45B2C18D1C9009615D6 /* SearchLocationView.swift in Sources */,
+				60BA70352C199DE40040CEE5 /* NetworkingService.swift in Sources */,
 				A9BDE4652C18D2B4009615D6 /* LocationCard.swift in Sources */,
 				A9BDE4612C18D269009615D6 /* SearchLocationsViewModel.swift in Sources */,
 				A9BDE46F2C18DD0B009615D6 /* CloudyBackground.swift in Sources */,
