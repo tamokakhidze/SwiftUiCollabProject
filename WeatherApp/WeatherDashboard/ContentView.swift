@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = WeatherViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            ZStack {
+                VStack {
+                    PickerView(
+                        viewModel: viewModel
+                    )
+                }
+                .padding()
+            }
         }
-        .padding()
     }
 }
 
