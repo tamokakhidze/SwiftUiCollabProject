@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PrecipitationsView: View {
-    @ObservedObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var body: some View {
         VStack {
@@ -66,5 +66,6 @@ struct PrecipitationsView: View {
 }
 
 #Preview {
-    PrecipitationsView(viewModel: WeatherViewModel())
+    PrecipitationsView()
+        .environmentObject(WeatherViewModel())
 }

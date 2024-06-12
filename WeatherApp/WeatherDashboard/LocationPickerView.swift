@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PickerView: View {
     // MARK: - Properties
-    @ObservedObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var body: some View {
         HStack {

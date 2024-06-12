@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct WeekView: View {
-    @ObservedObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var body: some View {
         
@@ -45,12 +45,10 @@ struct WeekView: View {
     }
 }
 
-struct WeekView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeekView(viewModel: WeatherViewModel())
-    }
+#Preview {
+    WeekView()
+        .environmentObject(WeatherViewModel())
 }
-
 
 import SwiftUI
 

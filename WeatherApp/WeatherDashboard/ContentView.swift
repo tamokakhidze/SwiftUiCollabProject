@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = WeatherViewModel()
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack {
                     PickerView(
-                        viewModel: viewModel
+                        viewModel: _viewModel
                     )
                 }
                 .padding()
@@ -26,4 +26,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(WeatherViewModel())
 }
