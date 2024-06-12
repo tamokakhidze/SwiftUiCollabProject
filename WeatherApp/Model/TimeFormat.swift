@@ -8,9 +8,27 @@
 import Foundation
 
 struct TimeFormat {
-   static let timeFormatter: DateFormatter = {
+    static let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
+    
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    static let fullDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+    
+    static func fahrenheitToCelsius(_ fahrenheit: Double) -> Double {
+        return (fahrenheit - 32) * 5 / 9
+    }
+    
 }
+

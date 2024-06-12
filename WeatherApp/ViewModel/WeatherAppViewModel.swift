@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherViewModel: ObservableObject {
+final class WeatherViewModel: ObservableObject {
     
     // MARK: - Cities Property
     @Published var cities: [City] = []
@@ -17,7 +17,6 @@ class WeatherViewModel: ObservableObject {
     @Published var weather: [Weather] = []
     @Published var dailyWeather: [DailyWeather] = []
     @Published var cityName: String = "Tbilisi"
-    @Published var selectedCity: City?
     @Published var favoriteCities: [City] = [City(name: "Tbilisi", country: "GE")]
     @Published var locationCards: [LocationCardModel] = []
     private let weatherApiKey = "ebb0b179a69b3593243135c990d01991"
@@ -69,7 +68,7 @@ class WeatherViewModel: ObservableObject {
             }
         }
     }
-
+    
     // MARK: - Transforming Hourly Into Weekly Days
     private func aggregateWeatherByDay(weatherList: [Weather]) -> [DailyWeather] {
         var dailyWeatherDict = [String: [Weather]]()
@@ -89,10 +88,23 @@ class WeatherViewModel: ObservableObject {
         
         for (date, weatherList) in dailyWeatherDict {
             let averageTemp = weatherList.map { $0.main.temp }.reduce(0, +) / Double(weatherList.count)
+            let minTemp = weatherList.map { $0.main.temp_min }.min() ?? 0.0
+            let maxTemp = weatherList.map { $0.main.temp_max }.max() ?? 0.0
+            let averageHumidity = weatherList.map { $0.main.humidity }.reduce(0, +) / Double(weatherList.count)
+            let averageWindSpeed = weatherList.map { $0.wind.speed }.reduce(0, +) / Double(weatherList.count)
             let descriptions = weatherList.flatMap { $0.weather.map { $0.description } }
             let mostFrequentDescription = descriptions.mostFrequent()
             
-            let dailyWeather = DailyWeather(date: date, averageTemp: averageTemp, description: mostFrequentDescription ?? "", icon: weatherList.first?.weather.first?.icon ?? "")
+            let dailyWeather = DailyWeather(
+                date: date,
+                averageTemp: averageTemp,
+                minTemp: minTemp,
+                maxTemp: maxTemp,
+                averageHumidity: averageHumidity,
+                averageWindSpeed: averageWindSpeed,
+                description: mostFrequentDescription ?? "",
+                icon: weatherList.first?.weather.first?.icon ?? ""
+            )
             dailyWeatherArray.append(dailyWeather)
         }
         
