@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct City: Identifiable, Codable {
+    var id: String { name }
+    let name: String
+    let country: String
+}
