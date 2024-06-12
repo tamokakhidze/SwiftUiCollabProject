@@ -12,3 +12,11 @@ struct City: Identifiable, Codable {
     let name: String
     let country: String
 }
+
+struct LocationCardModel: Identifiable {
+    var id = UUID()
+    let name: String
+    let description: String
+    let temperature: Int
+    let icon: String
+}
