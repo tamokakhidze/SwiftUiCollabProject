@@ -50,8 +50,6 @@ struct ContentView: View {
                         }
                     }
                 }
-            }.onAppear {
-                print(viewModel.locationCards.description)
             }
         }
     }
