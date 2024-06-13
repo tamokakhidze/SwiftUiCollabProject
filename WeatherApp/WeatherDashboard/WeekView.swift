@@ -5,17 +5,23 @@
 import SwiftUI
 
 struct WeekView: View {
-    @ObservedObject var viewModel: WeatherViewModel
+    // MARK: - Properties
+    @EnvironmentObject var viewModel: WeatherViewModel
     
+    // MARK: - Body
     var body: some View {
-        
         ScrollView {
             VStack {
-                ForEach(viewModel.dailyWeather, id: \.id) { daily in
+                ForEach(viewModel.dailyWeather) { daily in
                     HStack {
                         Text(TimeFormat.weekdayString(from: daily.date))
-                            .frame(width: 100, alignment: .leading)
+                            .frame(width: 100, height: 22, alignment: .leading)
+                            .font(.system(size: 18))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                        
                         Spacer()
+                        
                         if let url = viewModel.getIconURL(for: daily.icon) {
                             AsyncImage(url: url) { image in
                                 image.resizable()
@@ -24,45 +30,50 @@ struct WeekView: View {
                             }
                             .frame(width: 50, height: 50)
                         }
+                        
                         Spacer()
                         
                         VStack {
-                            Text(" \(daily.maxTemp - 273.15, specifier: "%.0f")°C")
-                                .frame(width: 50, alignment: .trailing)
+                            HStack(alignment: .top, spacing: 0) {
+                                Text(" \(daily.maxTemp - 273.15, specifier: "%.0f")")
+                                    .frame(width: 50, alignment: .trailing)
+                                    .font(.system(size: 18))
+                                    .fontWeight(.regular)
+                                    .foregroundStyle(.white)
+                                
+                                Text("°C")
+                                    .font(.system(size: 10))
+                                
+                                    .foregroundStyle(.white)
+                            }
                         }
-                        Spacer()
-                        Text(" \(daily.minTemp - 273.15, specifier: "%.0f")°C")
-                            .frame(width: 50, alignment: .trailing)
+                        
+                        HStack(alignment: .top, spacing: 0) {
+                            Text(" \(daily.minTemp - 273.15, specifier: "%.0f")")
+                                .frame(width: 50, alignment: .trailing)
+                                .font(.system(size: 18))
+                                .fontWeight(.regular)
+                            
+                            Text("°C")
+                                .font(.system(size: 10))
+                        }
+                        .frame(height: 12)
+                        .foregroundStyle(.secondary)
+                        
                     }
                     .padding()
-                    .background(Color.white.opacity(0.2))
-                    .cornerRadius(10)
+                    .frame(height: 50)
                 }
                 
             }
             .padding(.horizontal)
+            .padding(EdgeInsets(top: 28, leading: 0, bottom: 28, trailing: 0))
+            .background(.ultraThinMaterial)
+            .cornerRadius(20, corners: [.topLeft, .bottomLeft, .topRight, .bottomRight])
         }
     }
 }
 
-struct WeekView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeekView(viewModel: WeatherViewModel())
-    }
-}
-
-
-import SwiftUI
-
-struct BlurView: UIViewRepresentable {
-    var style: UIBlurEffect.Style = .systemMaterial
-    
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        return UIVisualEffectView(effect: UIBlurEffect(style: style))
-    }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
-}
 
 
 

@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct PrecipitationsView: View {
+    // MARK: - Properties
     @ObservedObject var viewModel: WeatherViewModel
     
+    // MARK: - Body
     var body: some View {
         VStack {
+            
+            // MARK: - Precipitations
             HStack {
                 Spacer()
                 VStack(alignment: .center, spacing: 5) {
@@ -28,25 +32,27 @@ struct PrecipitationsView: View {
             }
             .background(.ultraThinMaterial)
             .cornerRadius(20)
-            .shadow(radius: 10)
             .padding()
+            .foregroundStyle(.secondaryText)
             
-            HStack(spacing: 30) {
+            // MARK: - Precipitation Info
+            HStack{
                 HStack {
-                    Image(systemName: "cloud.drizzle")
+                    Image(.drizzlePercentageIcon)
                         .renderingMode(.template)
                     
                     Text("18 %")
                 }
                 Spacer()
                 HStack {
-                    Image(systemName: "drop.fill")
+                    Image(.humidityIcon)
                         .renderingMode(.template)
                     
                     Text("\(Int(viewModel.dailyWeather.first?.averageHumidity ?? 0)) %")
                 }
+                Spacer()
                 HStack {
-                    Image(systemName: "wind")
+                    Image(.windIcon)
                         .renderingMode(.template)
                     
                     Text("\(String(format: "%.1f", viewModel.dailyWeather.first?.averageWindSpeed ?? 0.0)) km/h")
@@ -55,16 +61,13 @@ struct PrecipitationsView: View {
             .padding()
             .background(.ultraThinMaterial)
             .cornerRadius(20)
-            .shadow(radius: 10)
             .padding()
+            .foregroundStyle(.secondaryText)
         }
     }
     
+    // MARK: - Celsius Calculate
     func kelvinToCelsius(_ kelvin: Double) -> Int {
         return Int(kelvin - 273.15)
     }
-}
-
-#Preview {
-    PrecipitationsView(viewModel: WeatherViewModel())
 }
