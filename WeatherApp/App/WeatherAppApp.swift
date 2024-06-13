@@ -9,7 +9,7 @@ import SwiftUI
  
 @main
 struct WeatherAppApp: App {
-    @StateObject private var viewModel = WeatherViewModel()
+    @StateObject private var viewModel = WeatherAppViewModel()
     
     var body: some Scene {
         WindowGroup {

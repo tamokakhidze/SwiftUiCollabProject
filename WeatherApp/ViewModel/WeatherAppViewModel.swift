@@ -7,23 +7,23 @@
 
 import Foundation
 
-final class WeatherViewModel: ObservableObject {
+final class WeatherAppViewModel: ObservableObject {
     
     // MARK: - Cities Property
-    @Published var cities: [City] = []
+    @Published var cities: [SearchLocation] = []
     private let cityApiKey = "S6mPry2Yz9yg/qYd6t3ssA==QV6tAbktzatADr9h"
     
     // MARK: - Weather Properties
     @Published var weather: [Weather] = []
     @Published var dailyWeather: [DailyWeather] = []
     @Published var cityName: String = "Tbilisi"
-    @Published var favoriteCities: [City] = [City(name: "Tbilisi", country: "GE")]
+    @Published var favoriteCities: [SearchLocation] = [SearchLocation(name: "Tbilisi", country: "GE")]
     @Published var locationCards: [LocationCardModel] = []
     private let weatherApiKey = "ebb0b179a69b3593243135c990d01991"
 
     // MARK: - Default Init For First Page
     init() {
-        fetchWeather(for: City(name: "Tbilisi", country: "GE"))
+        fetchWeather(for: SearchLocation(name: "Tbilisi", country: "GE"))
     }
 
     // MARK: - Fetching Cities
@@ -35,7 +35,7 @@ final class WeatherViewModel: ObservableObject {
         }
 
         let headers = ["X-Api-Key": cityApiKey]
-        NetworkingService.shared.fetchData(from: url, headers: headers) { (result: Result<[City], Error>) in
+        NetworkingService.shared.fetchData(from: url, headers: headers) { (result: Result<[SearchLocation], Error>) in
             switch result {
             case .success(let cities):
                 self.cities = cities
@@ -46,7 +46,7 @@ final class WeatherViewModel: ObservableObject {
     }
 
     // MARK: - Fetching Weather With City Name
-    func fetchWeather(for city: City) {
+    func fetchWeather(for city: SearchLocation) {
         let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(city.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")&appid=\(weatherApiKey)"
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
@@ -114,7 +114,7 @@ final class WeatherViewModel: ObservableObject {
     }
     
     // MARK: - Adding Location Cards
-    private func addLocationCard(for city: City, weatherResponse: WeatherResponse) {
+    private func addLocationCard(for city: SearchLocation, weatherResponse: WeatherResponse) {
         let tempKelvin = weatherResponse.list.first?.main.temp ?? 273.15
         let tempCelsius = tempKelvin - 273.15
         let description = weatherResponse.list.first?.weather.first?.description ?? ""

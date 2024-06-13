@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PickerView: View {
+struct LocationPickerView: View {
     // MARK: - Properties
-    @EnvironmentObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherAppViewModel
     
     var body: some View {
         HStack {
@@ -26,7 +26,7 @@ struct PickerView: View {
                         }
                     }
                 }
-                NavigationLink(destination: SearchLocationsView()) {
+                NavigationLink(destination: SearchLocationView()) {
                     HStack {
                         Text("Add new location")
                         Image(systemName: "location.fill")
