@@ -5,10 +5,11 @@
 import SwiftUI
 
 struct WeekView: View {
+    // MARK: - Properties
     @EnvironmentObject var viewModel: WeatherViewModel
     
+    // MARK: - Body
     var body: some View {
-        
         ScrollView {
             VStack {
                 ForEach(viewModel.dailyWeather) { daily in
@@ -71,11 +72,6 @@ struct WeekView: View {
             .cornerRadius(20, corners: [.topLeft, .bottomLeft, .topRight, .bottomRight])
         }
     }
-}
- 
-#Preview {
-    WeekView()
-        .environmentObject(WeatherViewModel())
 }
  
 
