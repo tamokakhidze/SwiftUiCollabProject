@@ -37,7 +37,8 @@ struct ContentView: View {
                         HStack {
                             Spacer()
                             
-                            LocationPickerView(viewModel: _viewModel)
+                            LocationPickerView()
+                                .environmentObject(viewModel)
                         }
                         Spacer().frame(height: 68)
                         VStack {
