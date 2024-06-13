@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct PrecipitationsView: View {
+    // MARK: - Properties
     @EnvironmentObject var viewModel: WeatherViewModel
     
+    // MARK: - Body
     var body: some View {
         VStack {
             HStack {
@@ -28,10 +30,11 @@ struct PrecipitationsView: View {
             }
             .background(.ultraThinMaterial)
             .cornerRadius(20)
-            .shadow(radius: 10)
             .padding()
+            .foregroundStyle(.secondaryText)
+
             
-            HStack(spacing: 30) {
+            HStack{
                 HStack {
                     Image(systemName: "cloud.drizzle")
                         .renderingMode(.template)
@@ -45,6 +48,7 @@ struct PrecipitationsView: View {
                     
                     Text("\(Int(viewModel.dailyWeather.first?.averageHumidity ?? 0)) %")
                 }
+                Spacer()
                 HStack {
                     Image(systemName: "wind")
                         .renderingMode(.template)
@@ -55,17 +59,15 @@ struct PrecipitationsView: View {
             .padding()
             .background(.ultraThinMaterial)
             .cornerRadius(20)
-            .shadow(radius: 10)
+            .foregroundStyle(.secondaryText)
             .padding()
+            
         }
     }
     
+    // MARK: - Calculate Celsius
     func kelvinToCelsius(_ kelvin: Double) -> Int {
         return Int(kelvin - 273.15)
     }
 }
 
-#Preview {
-    PrecipitationsView()
-        .environmentObject(WeatherViewModel())
-}
