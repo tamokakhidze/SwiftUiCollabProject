@@ -53,7 +53,7 @@ func createSnowyWeatherScene(cloudColor: UIColor) -> SKScene {
     return scene
 }
 
-class SnowyWeatherScene: SKScene {
+final class SnowyWeatherScene: SKScene {
     let cloudColor: UIColor
 
     init(cloudColor: UIColor) {
@@ -73,8 +73,8 @@ class SnowyWeatherScene: SKScene {
             addChild(node)
             node.particlePositionRange.dx = UIScreen.main.bounds.width
             node.particleScale = 0.3
-            node.particleScaleRange = 0.5
-            node.particleScaleSpeed = 0.1
+            node.particleScaleRange = 0.4
+            node.particleScaleSpeed = 0.3
         }
         if let cloudNode = SKEmitterNode(fileNamed: "WholeClouds.sks") {
             cloudNode.particlePositionRange.dx = UIScreen.main.bounds.width
@@ -87,4 +87,8 @@ class SnowyWeatherScene: SKScene {
             addChild(cloudNode)
         }
     }
+}
+
+#Preview {
+    SnowyBackground()
 }

@@ -63,7 +63,7 @@ struct DarkModeStarAnimation: View {
     }
 }
 
-class StarFall: SKScene {
+final class StarFall: SKScene {
     override func sceneDidLoad() {
         size = UIScreen.main.bounds.size
         scaleMode = .aspectFill
@@ -110,3 +110,6 @@ class StarFall: SKScene {
     }
 }
 
+#Preview {
+    SunnyBackground()
+}

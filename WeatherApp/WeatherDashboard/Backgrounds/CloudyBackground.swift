@@ -8,7 +8,6 @@
 import SwiftUI
 import SpriteKit
 
-//MARK: ---cloudy view
 struct CloudyBackground: View {
     var body: some View {
         WeatherBackground(
@@ -54,7 +53,7 @@ func createCloudyWeatherScene(cloudColor: UIColor) -> SKScene {
     return scene
 }
 
-class CloudyWeatherScene: SKScene {
+final class CloudyWeatherScene: SKScene {
     let cloudColor: UIColor
 
     init(cloudColor: UIColor) {
@@ -81,4 +80,8 @@ class CloudyWeatherScene: SKScene {
             addChild(cloudNode)
         }
     }
+}
+
+#Preview {
+    CloudyBackground()
 }
