@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherAppViewModel
     
     private var customBackground: AnyView {
         if let weatherMain = viewModel.weather.first?.weather.first?.main.lowercased() {
@@ -37,13 +37,13 @@ struct ContentView: View {
                         HStack {
                             Spacer()
                             
-                            PickerView(viewModel: _viewModel)
+                            LocationPickerView(viewModel: _viewModel)
                         }
                         Spacer().frame(height: 68)
                         VStack {
                             PrecipitationsView()
                             
-                            WeatherView().padding(2)
+                            TodayView().padding(2)
                             
                             WeekView()
                                 .padding(EdgeInsets(top: 0, leading: 19, bottom: 0, trailing: 19))
@@ -57,5 +57,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(WeatherViewModel())
+        .environmentObject(WeatherAppViewModel())
 }

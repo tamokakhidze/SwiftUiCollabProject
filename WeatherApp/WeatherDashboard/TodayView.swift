@@ -1,5 +1,5 @@
 //
-//  WeatherView.swift
+//  TodayView.swift
 //  WeatherApp
 //
 //  Created by Tamuna Kakhidze on 11.06.24.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct WeatherView: View {
+struct TodayView: View {
     @State private var selectedIndex: Int? = 0
-    @EnvironmentObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherAppViewModel
     var currentDateFormatted: String {
         return shortDateFormatter.string(from: Date())
     }
@@ -51,7 +51,7 @@ struct WeatherView: View {
 struct WeatherCard: View {
     let data: Weather
     let isSelected: Bool
-    @ObservedObject var viewModel: WeatherViewModel
+    @ObservedObject var viewModel: WeatherAppViewModel
     var body: some View {
         ZStack {
             if isSelected {
@@ -99,8 +99,8 @@ struct WeatherCard: View {
 }
 
 #Preview {
-    WeatherView()
-        .environmentObject(WeatherViewModel())
+    TodayView()
+        .environmentObject(WeatherAppViewModel())
 }
 
 

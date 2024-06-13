@@ -7,11 +7,11 @@
 
 import SwiftUI
  
-struct SearchLocationsView: View {
+struct SearchLocationView: View {
     @State private var cityName: String = ""
     @State private var searchPerformed: Bool = false
     @State private var searchCompleted: Bool = false
-    @EnvironmentObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherAppViewModel
     @Environment(\.presentationMode) var presentationMode
  
     var body: some View {
@@ -115,7 +115,7 @@ struct SearchLocationsView: View {
  
 #Preview {
     NavigationView {
-        SearchLocationsView()
-            .environmentObject(WeatherViewModel())
+        SearchLocationView()
+            .environmentObject(WeatherAppViewModel())
     }
 }

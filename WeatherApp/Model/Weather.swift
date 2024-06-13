@@ -7,6 +7,16 @@
 
 import Foundation
 
+struct Weather: Decodable {
+    let main: Main
+    let weather: [WeatherInfo]
+    let wind: Wind
+    let dt: Int
+    var date: Date {
+        return Date(timeIntervalSince1970: TimeInterval(dt))
+    }
+}
+
 struct DailyWeather: Identifiable {
     let id = UUID()
     let date: String
@@ -17,16 +27,6 @@ struct DailyWeather: Identifiable {
     let averageWindSpeed: Double
     let description: String
     let icon: String
-}
-
-struct Weather: Decodable {
-    let main: Main
-    let weather: [WeatherInfo]
-    let wind: Wind
-    let dt: Int
-    var date: Date {
-        return Date(timeIntervalSince1970: TimeInterval(dt))
-    }
 }
 
 struct Main: Decodable {
