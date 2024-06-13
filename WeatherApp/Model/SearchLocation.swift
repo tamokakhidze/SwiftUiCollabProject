@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct SearchLocation: Identifiable, Decodable {
+struct SearchLocation: Identifiable, Codable {
     var id: String { name }
     let name: String
     let country: String
 }
 
-struct LocationCardModel: Identifiable {
+struct LocationCardModel: Identifiable, Codable {
     var id = UUID()
     let name: String
     let description: String
