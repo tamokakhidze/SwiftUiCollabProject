@@ -10,37 +10,47 @@ import SwiftUI
 struct TodayView: View {
     @State private var selectedIndex: Int? = 0
     @EnvironmentObject var viewModel: WeatherAppViewModel
+    
     var currentDateFormatted: String {
-        return shortDateFormatter.string(from: Date())
+        shortDateFormatter.string(from: Date())
     }
+    
+    var headerView: some View {
+        HStack {
+            Text("Today")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(.white)
+                .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
+            Spacer()
+            Text(currentDateFormatted)
+                .font(.system(size: 18, weight: .regular))
+                .foregroundColor(.white)
+                .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
+        }
+        .padding([.leading, .trailing, .top], 12)
+    }
+    
+    var weatherCards: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 14) {
+                ForEach(Array(viewModel.weather.enumerated()), id: \.offset) { index, data in
+                    WeatherCard(data: data, isSelected: index == selectedIndex, viewModel: viewModel)
+                        .onTapGesture {
+                            selectedIndex = index
+                        }
+                }
+            }
+            .padding(.horizontal, 12)
+            .padding(.bottom, 12)
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text("Today")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(.white)
-                    .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
-                Spacer()
-                Text(currentDateFormatted)
-                    .font(.system(size: 18, weight: .regular))
-                    .foregroundColor(.white)
-                    .shadow(color: Color.black.opacity(0.1), radius: 1, x: -2, y: 3)
-            }
-            .padding([.leading, .trailing, .top], 12)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 14) {
-                    ForEach(Array(viewModel.weather.enumerated()), id: \.offset) { index, data in
-                        WeatherCard(data: data, isSelected: index == selectedIndex, viewModel: viewModel)
-                            .onTapGesture {
-                                selectedIndex = index
-                            }
-                    }
-                }
-                .padding(.horizontal, 12)
-                .padding(.bottom, 12)
-            }
+            headerView
+            weatherCards
         }
-        .frame(width: 343, height: 217)
+        .frame(height: 217)
         .background(.ultraThinMaterial)
         .cornerRadius(20)
         .shadow(color: .white.opacity(0.5), radius: 10, x: 0, y: 5)
@@ -52,6 +62,7 @@ struct WeatherCard: View {
     let data: Weather
     let isSelected: Bool
     @ObservedObject var viewModel: WeatherAppViewModel
+    
     var body: some View {
         ZStack {
             if isSelected {
@@ -103,9 +114,8 @@ struct WeatherCard: View {
         .environmentObject(WeatherAppViewModel())
 }
 
-
 let shortDateFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateFormat = "MMM,dd"
+    formatter.dateFormat = "MMM, dd"
     return formatter
 }()
