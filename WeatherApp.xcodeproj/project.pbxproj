@@ -23,8 +23,6 @@
 		A9BDE4572C18D14F009615D6 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4562C18D14F009615D6 /* TodayView.swift */; };
 		A9BDE4592C18D16C009615D6 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4582C18D16C009615D6 /* WeekView.swift */; };
 		A9BDE45B2C18D1C9009615D6 /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE45A2C18D1C9009615D6 /* SearchLocationView.swift */; };
-		A9BDE45D2C18D215009615D6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE45C2C18D215009615D6 /* MainViewModel.swift */; };
-		A9BDE4612C18D269009615D6 /* SearchLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4602C18D269009615D6 /* SearchLocationsViewModel.swift */; };
 		A9BDE4632C18D284009615D6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4622C18D284009615D6 /* Weather.swift */; };
 		A9BDE4652C18D2B4009615D6 /* LocationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4642C18D2B4009615D6 /* LocationCard.swift */; };
 		A9BDE4672C18D2D9009615D6 /* LocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDE4662C18D2D9009615D6 /* LocationPickerView.swift */; };
@@ -53,8 +51,6 @@
 		A9BDE4562C18D14F009615D6 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		A9BDE4582C18D16C009615D6 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		A9BDE45A2C18D1C9009615D6 /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
-		A9BDE45C2C18D215009615D6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		A9BDE4602C18D269009615D6 /* SearchLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationsViewModel.swift; sourceTree = "<group>"; };
 		A9BDE4622C18D284009615D6 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		A9BDE4642C18D2B4009615D6 /* LocationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCard.swift; sourceTree = "<group>"; };
 		A9BDE4662C18D2D9009615D6 /* LocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerView.swift; sourceTree = "<group>"; };
@@ -159,7 +155,6 @@
 				A9BDE4542C18D0AF009615D6 /* PrecipitationsView.swift */,
 				A9BDE4562C18D14F009615D6 /* TodayView.swift */,
 				A9BDE4582C18D16C009615D6 /* WeekView.swift */,
-				A9BDE45C2C18D215009615D6 /* MainViewModel.swift */,
 				A9BDE4662C18D2D9009615D6 /* LocationPickerView.swift */,
 				A9BDE46B2C18DCEC009615D6 /* Backgrounds */,
 			);
@@ -170,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				A9BDE45A2C18D1C9009615D6 /* SearchLocationView.swift */,
-				A9BDE4602C18D269009615D6 /* SearchLocationsViewModel.swift */,
 				A9BDE4642C18D2B4009615D6 /* LocationCard.swift */,
 			);
 			path = SearchLocation;
@@ -280,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9BDE4732C18DD39009615D6 /* SnowyBackground.swift in Sources */,
-				A9BDE45D2C18D215009615D6 /* MainViewModel.swift in Sources */,
 				758C9ACC2C1AF2C70086E414 /* WeatherBackground.swift in Sources */,
 				A9BDE4462C18CFF7009615D6 /* ContentView.swift in Sources */,
 				60BA70372C19A16B0040CEE5 /* WeatherAppViewModel.swift in Sources */,
@@ -295,7 +288,6 @@
 				A9BDE45B2C18D1C9009615D6 /* SearchLocationView.swift in Sources */,
 				60BA70352C199DE40040CEE5 /* NetworkingService.swift in Sources */,
 				A9BDE4652C18D2B4009615D6 /* LocationCard.swift in Sources */,
-				A9BDE4612C18D269009615D6 /* SearchLocationsViewModel.swift in Sources */,
 				A9BDE46F2C18DD0B009615D6 /* CloudyBackground.swift in Sources */,
 				A9BDE46A2C18D83F009615D6 /* SearchLocation.swift in Sources */,
 				A9BDE4672C18D2D9009615D6 /* LocationPickerView.swift in Sources */,
