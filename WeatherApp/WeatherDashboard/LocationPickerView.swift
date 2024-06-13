@@ -14,7 +14,7 @@ struct LocationPickerView: View {
     var body: some View {
         HStack {
             Menu {
-                ForEach(viewModel.favoriteCities, id: \.id) { city in
+                ForEach(viewModel.favoriteCities) { city in
                     Button(action: {
                         viewModel.fetchWeather(for: city)
                     }) {
