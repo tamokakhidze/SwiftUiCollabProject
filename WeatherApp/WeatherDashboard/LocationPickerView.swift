@@ -9,18 +9,11 @@ import SwiftUI
 
 struct PickerView: View {
     // MARK: - Properties
-    @ObservedObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var body: some View {
         HStack {
             Menu {
-                NavigationLink(destination: SearchLocationsView()) {
-                    HStack {
-                        Text("Add new location")
-                        Image(systemName: "location.fill")
-                    }
-                } 
-                
                 ForEach(viewModel.favoriteCities, id: \.id) { city in
                     Button(action: {
                         viewModel.fetchWeather(for: city)
@@ -31,6 +24,12 @@ struct PickerView: View {
                                 Image(systemName: "checkmark")
                             }
                         }
+                    }
+                }
+                NavigationLink(destination: SearchLocationsView()) {
+                    HStack {
+                        Text("Add new location")
+                        Image(systemName: "location.fill")
                     }
                 }
                 

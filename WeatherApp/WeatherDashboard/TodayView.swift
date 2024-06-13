@@ -1,8 +1,15 @@
+//
+//  WeatherView.swift
+//  WeatherApp
+//
+//  Created by Tamuna Kakhidze on 11.06.24.
+//
+
 import SwiftUI
- 
+
 struct WeatherView: View {
     @State private var selectedIndex: Int? = 0
-    @ObservedObject var viewModel: WeatherViewModel
+    @EnvironmentObject var viewModel: WeatherViewModel
     var currentDateFormatted: String {
         return shortDateFormatter.string(from: Date())
     }
@@ -40,7 +47,7 @@ struct WeatherView: View {
         .padding()
     }
 }
- 
+
 struct WeatherCard: View {
     let data: Weather
     let isSelected: Bool
@@ -90,14 +97,15 @@ struct WeatherCard: View {
         }
     }
 }
- 
-struct WeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        WeatherView(viewModel: WeatherViewModel())
-    }
+
+#Preview {
+    WeatherView()
+        .environmentObject(WeatherViewModel())
 }
+
+
 let shortDateFormatter: DateFormatter = {
-let formatter = DateFormatter()
-        formatter.dateFormat = "MMM,dd"
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MMM,dd"
     return formatter
-    }()
+}()

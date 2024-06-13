@@ -120,8 +120,10 @@ final class WeatherViewModel: ObservableObject {
         let description = weatherResponse.list.first?.weather.first?.description ?? ""
         let icon = weatherResponse.list.first?.weather.first?.icon ?? ""
         
-        let locationCard = LocationCardModel(name: city.name, description: description, temperature: Int(tempCelsius), icon: icon)
-        locationCards.append(locationCard)
+        if !locationCards.contains(where: { $0.name == city.name }) {
+            let locationCard = LocationCardModel(name: city.name, description: description, temperature: Int(tempCelsius), icon: icon)
+            locationCards.append(locationCard)
+        }
     }
     
     // MARK: - Downloading Icons
