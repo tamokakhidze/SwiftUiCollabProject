@@ -43,6 +43,7 @@ struct Wind: Codable {
 struct WeatherInfo: Codable {
     let description: String
     let icon: String
+    let main: String
 }
 
 struct WeatherResponse: Codable {
