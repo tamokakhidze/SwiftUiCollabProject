@@ -47,13 +47,13 @@ struct DarkModeRainyAnimation: View {
 }
 
 func createWeatherScene(cloudColor: UIColor) -> SKScene {
-    let scene = WeatherScene(cloudColor: cloudColor)
+    let scene = RainyWeatherScene(cloudColor: cloudColor)
     scene.size = UIScreen.main.bounds.size
     scene.scaleMode = .resizeFill
     return scene
 }
 
-class WeatherScene: SKScene {
+final class RainyWeatherScene: SKScene {
     let cloudColor: UIColor
 
     init(cloudColor: UIColor) {
@@ -84,4 +84,8 @@ class WeatherScene: SKScene {
             addChild(cloudNode)
         }
     }
+}
+
+#Preview {
+    RainyBackground()
 }
